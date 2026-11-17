@@ -7,6 +7,9 @@ app = Flask(__name__)
 def home():
     return "Welcome to the Flask API!"
 
+@app.route("/api")
+def api():
+    return jsonify(message="This is the API endpoint.")
 
 @app.route("/health")
 def health():
