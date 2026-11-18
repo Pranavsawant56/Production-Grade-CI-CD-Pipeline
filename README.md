@@ -18,6 +18,17 @@ python app.py
 
 The application runs at <http://127.0.0.1:5000>.
 
+## Run with Docker
+
+Build and start the container:
+
+```bash
+docker build -t flask-api .
+docker run --rm -p 5000:5000 flask-api
+```
+
+The API is available at <http://127.0.0.1:5000>.
+
 Available routes:
 
 - `/` - welcome message and sample data
