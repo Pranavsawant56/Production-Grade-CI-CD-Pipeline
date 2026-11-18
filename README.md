@@ -24,3 +24,11 @@ Available routes:
 - `/api` - API message and sample data
 - `/health` - application health status and sample data
 - `/api/message` - JSON message and sample data
+
+## Run tests
+
+Run the unit tests from the project root:
+
+```bash
+python -m unittest discover -s tests
+```
