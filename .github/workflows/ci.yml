@@ -35,7 +35,7 @@ jobs:
         run: python -m ruff check .
 
       - name: Authenticate with SonarQube
-        uses: SonarSource/sonarqube-auth-action@v1
+        uses: SonarSource/sonarqube-auth-action@b372e2c2930aadfcc4f4399446da1e12772709ad
 
       - name: Run SonarQube analysis
-        uses: SonarSource/sonarqube-scan-action@v8
+        uses: SonarSource/sonarqube-scan-action@59202af334b4ba7b5db01b701b8e79f8b3bef0f4
