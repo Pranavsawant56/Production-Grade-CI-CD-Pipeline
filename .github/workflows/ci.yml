@@ -1,3 +1,4 @@
+
 name: Python Application CI
 
 on:
@@ -8,9 +9,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
       - name: Check out repository
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -26,3 +33,9 @@ jobs:
 
       - name: Run ruff linting
         run: python -m ruff check .
+
+      - name: Authenticate with SonarQube
+        uses: SonarSource/sonarqube-auth-action@v1
+
+      - name: Run SonarQube analysis
+        uses: SonarSource/sonarqube-scan-action@v8
