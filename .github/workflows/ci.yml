@@ -39,3 +39,5 @@ jobs:
 
       - name: Run SonarQube analysis
         uses: SonarSource/sonarqube-scan-action@59202af334b4ba7b5db01b701b8e79f8b3bef0f4
+      - name: Build docker image
+        run: docker build -t my-python-app:${{github.sha}} .
