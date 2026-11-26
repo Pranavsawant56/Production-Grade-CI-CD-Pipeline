@@ -52,4 +52,14 @@ jobs:
           severity: HIGH,CRITICAL
           ignore-unfixed: true
         env:
-          TRIVY_SKIP_VERSION_CHECK: true    
+          TRIVY_SKIP_VERSION_CHECK: true
+      - name: Configure AWS credentials
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Verify AWS identity
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: aws sts get-caller-identity
